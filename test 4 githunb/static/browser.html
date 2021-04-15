@@ -32,7 +32,7 @@
         var flvPlayer = flvjs.createPlayer({
             type: 'flv',
             isLive: true,
-            url: 'http://localhost:8000/live/stream.flv'
+            url: 'http://0.0.0.0:8000/live/stream.flv'
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();
