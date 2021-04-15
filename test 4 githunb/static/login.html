@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login - alaahijazi</title>
+</head>
+<body>
+    <div class="img-box">
+        <img src="https://identity.ksu.edu.sa/sites/identity.ksu.edu.sa/files/imce_images/ksu_masterlogo_black_rgb.png" alt="">
+    </div>
+    <form class="box" action="#" onsubmit="return login(event);">
+        <h1>Login</h1>
+        <input type="text" name="" id="username" placeholder="Username">
+        <input type="password" name="" id="password" placeholder="Password">
+        <input type="submit" name="" value="Login">
+        <span id="error"></span>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+    <script>
+        function login(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            axios.post("/check_login", { username, password })
+                .then(response => {
+                    localStorage.authorization = `${username}-${password}`;
+                    window.location.href = "/";
+                })
+                .catch(error => {
+                    console.log(error);
+                    document.getElementById("error").innerHTML = error.response.data;
+                });
+        }
+    </script>
+</body>
+</html>
