@@ -55,7 +55,7 @@ function circle(action) {
     "-i", `queue/${track}`,
     "-c", "copy",
     "-f", "flv",
-    "rtmp://mosaab-khalid-ksu-radio.zeet.app/live/stream"
+    "rtmp://localhost/live/stream"
 	//https://mosaab-khalid-ksu-radio/live/stream.flv
 	// was local host .
   ]);
