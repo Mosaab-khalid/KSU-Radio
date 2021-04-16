@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+    background-color: #0084BD;
+    text-align: center;
+    }
+
+    
+  
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+</head>
+<body>
+  <p style="text-align: center;"> <img src="https://identity.ksu.edu.sa/sites/identity.ksu.edu.sa/files/imce_images/ksu_masterlogo_black_rgb.png" alt="ksu logo" width="370"
+    height="150"> </p>
+    <!-- <p style="text-align: center;"><img src="/sound.png" alt="sound logo" width="100" -->
+      <!-- height="100"> -->
+    <!-- </p> -->
+  <audio id="audio" autoplay controls></audio>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flv.js/1.3.2/flv.min.js" integrity="sha512-viIpeG+70da8uvm9aktaT4dXxlalio52xjaKmGSjiUXrfPo4jRlp6elFvAEuV7GxmVB/qwQZiCQNadaF3DfVZg==" crossorigin="anonymous"></script>
+  <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+  <script>
+    const socket = io();
+    // window.onload = () => {
+    //   new Audio("http://localhost:5555/").play(); 
+    // };
+    var videoElement = document.getElementById('audio');
+        var flvPlayer = flvjs.createPlayer({
+            type: 'flv',
+            isLive: true,
+            url: 'http://ksu-radio.herokuapp.com/live/stream.flv'
+        });
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load();
+
+        setInterval(() => {
+          if (document.getElementById("audio").duration !== Infinity){
+            location.reload()
+          }
+        }, 10000);
+        // flvPlayer.play();
+  </script>
+</body>
+</html>
