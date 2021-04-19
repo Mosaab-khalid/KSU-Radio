@@ -10,7 +10,7 @@ const NodeMediaServer = require("node-media-server");
 const nms = new NodeMediaServer({
   rtmp: {
     port: 1935,
-    chunk_size: 1000,
+    chunk_size: 500,
     gop_cache: true,
     ping: 30,
     ping_timeout: 60
